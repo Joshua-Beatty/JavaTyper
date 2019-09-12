@@ -1,8 +1,37 @@
-#Greenfoot properties
-#Wed Sep 11 10:17:16 PDT 2019
-project.charset=UTF-8
-version=3.0.0
-mainWindow.y=40
-mainWindow.x=40
+#Greenfoot project file
+class.KeyboardInput.superclass=greenfoot.Actor
+class.MyWorld.superclass=greenfoot.World
+editor.fx.0.height=747
+editor.fx.0.width=818
+editor.fx.0.x=551
+editor.fx.0.y=95
 mainWindow.height=600
 mainWindow.width=850
+mainWindow.x=40
+mainWindow.y=40
+package.numDependencies=0
+package.numTargets=2
+project.charset=UTF-8
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=50
+target1.name=KeyboardInput
+target1.showInterface=false
+target1.type=ClassTarget
+target1.typeParameters=
+target1.width=120
+target1.x=0
+target1.y=0
+target2.height=50
+target2.name=MyWorld
+target2.showInterface=false
+target2.type=ClassTarget
+target2.typeParameters=
+target2.width=90
+target2.x=0
+target2.y=0
+version=3.0.0
+world.lastInstantiated=MyWorld
