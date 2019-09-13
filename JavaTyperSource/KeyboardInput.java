@@ -10,12 +10,12 @@ import java.util.regex.Pattern;
 public class KeyboardInput extends Actor
 {
     // instance variables - replace the example below with your own
-    public String rawInput = "";
-    public String text = "";
+    private String rawInput = "";
+    private String text = "";
     private String keyPressed = "";
-    Pattern possibleKeys = Pattern.compile("^[a-zA-Z.,;()\"]$");
-    GreenfootImage background;
-    TypedText TypedTextActor= new TypedText();
+    private Pattern possibleKeys = Pattern.compile("^[a-zA-Z.,;()\"]$");
+    private GreenfootImage background;
+    private TypedText TypedTextActor = new TypedText();
     /**
      * Constructor for objects of class KeyboardInput
      */
@@ -47,9 +47,9 @@ public class KeyboardInput extends Actor
         }
         System.out.println(text);
         if(text.length() > 4)  {
-            displayWhiteRed(text, text.length()-3);
+            displayWhiteRed(text, 4);
         } else {
-            displayWhiteRed(text, 0);
+            displayWhiteRed(text, text.length());
         }
     }
     public void entered(String input){
@@ -57,12 +57,16 @@ public class KeyboardInput extends Actor
     }
     public void addedToWorld(World world){
         background = world.getBackground();
-        world.addObject(TypedTextActor, 600, 700);
+        world.addObject(TypedTextActor, 0, 700);
     }
     public void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
-        GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), 100, Color.WHITE, Color.WHITE, Color.BLACK);
-        GreenfootImage redText = new GreenfootImage(textToDisplay.substring(WhiteCharacters, textToDisplay.length()), 100, Color.RED, Color.WHITE, Color.BLACK);
-        //GreenfootImage(
-        TypedTextActor.setImage(whiteText);
+        int fontSize = 50;
+        GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), fontSize, Color.WHITE, Color.WHITE, Color.BLACK);
+        GreenfootImage redText = new GreenfootImage(textToDisplay.substring(WhiteCharacters, textToDisplay.length()), fontSize, Color.RED, Color.WHITE, Color.BLACK);
+        GreenfootImage finalImage = new GreenfootImage(redText.getWidth()+whiteText.getWidth(),whiteText.getHeight());
+        finalImage.drawImage(whiteText, 0, 0);
+        finalImage.drawImage(redText, whiteText.getWidth(), 0);
+        
+        TypedTextActor.setImage(finalImage);
     }
 }
