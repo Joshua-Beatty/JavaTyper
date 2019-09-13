@@ -14,6 +14,8 @@ public class KeyboardInput extends Actor
     public String text = "";
     private String keyPressed = "";
     Pattern possibleKeys = Pattern.compile("^[a-zA-Z.,;()\"]$");
+    GreenfootImage background;
+    TypedText TypedTextActor= new TypedText();
     /**
      * Constructor for objects of class KeyboardInput
      */
@@ -44,9 +46,23 @@ public class KeyboardInput extends Actor
             }
         }
         System.out.println(text);
-        
+        if(text.length() > 4)  {
+            displayWhiteRed(text, text.length()-3);
+        } else {
+            displayWhiteRed(text, 0);
+        }
     }
     public void entered(String input){
     
+    }
+    public void addedToWorld(World world){
+        background = world.getBackground();
+        world.addObject(TypedTextActor, 600, 700);
+    }
+    public void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
+        GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), 100, Color.WHITE, Color.WHITE, Color.BLACK);
+        GreenfootImage redText = new GreenfootImage(textToDisplay.substring(WhiteCharacters, textToDisplay.length()), 100, Color.RED, Color.WHITE, Color.BLACK);
+        //GreenfootImage(
+        TypedTextActor.setImage(whiteText);
     }
 }
