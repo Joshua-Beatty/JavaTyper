@@ -1,6 +1,7 @@
 import greenfoot.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 /**
  * Write a description of class KeyboardInput here.
  * 
@@ -9,18 +10,32 @@ import java.util.regex.Pattern;
  */
 public class KeyboardInput extends Actor
 {
-    // instance variables - replace the example below with your own
+    public String text = "";
     private String rawInput = "";
-    private String text = "";
     private String keyPressed = "";
     private Pattern possibleKeys = Pattern.compile("^[a-zA-Z.,;()\"]$");
     private GreenfootImage background;
     private TypedText TypedTextActor = new TypedText();
+    private Pattern textChecker = Pattern.compile("^$");
+    private ArrayList<String> availableWords = new ArrayList<String>();
+    
     /**
      * Constructor for objects of class KeyboardInput
      */
     public KeyboardInput()
     {
+    }
+    
+    public void addedToWorld(World world){
+        background = world.getBackground();
+        world.addObject(TypedTextActor, 0, 700);
+        
+        /*
+        availableWords.add("help");
+        availableWords.add("hello");
+        availableWords.add("how");
+        availableWords.add("bello");
+        //*/
     }
     
     public void act(){
@@ -45,21 +60,23 @@ public class KeyboardInput extends Actor
                 }
             }
         }
-        System.out.println(text);
-        if(text.length() > 4)  {
-            displayWhiteRed(text, 4);
-        } else {
-            displayWhiteRed(text, text.length());
-        }
+        
+        displayWhiteRed(text, checktext(text));
     }
+    
     public void entered(String input){
     
     }
-    public void addedToWorld(World world){
-        background = world.getBackground();
-        world.addObject(TypedTextActor, 0, 700);
+    
+    public void addWord(String input){
+        availableWords.add(input);
     }
-    public void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
+    
+    public void removeWord(String input){
+        availableWords.remove(availableWords.indexOf(input));
+    }
+    
+    private void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
         int fontSize = 50;
         GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), fontSize, Color.WHITE, Color.WHITE, Color.BLACK);
         GreenfootImage redText = new GreenfootImage(textToDisplay.substring(WhiteCharacters, textToDisplay.length()), fontSize, Color.RED, Color.WHITE, Color.BLACK);
@@ -68,5 +85,21 @@ public class KeyboardInput extends Actor
         finalImage.drawImage(redText, whiteText.getWidth(), 0);
         
         TypedTextActor.setImage(finalImage);
+    }
+    
+    private int checktext(String text){
+        int correctCharacters = 0;
+        for(int i = 1; i < text.length() + 1; i++){
+            textChecker = Pattern.compile("^"+text.substring(0,i)+"");
+            if(availableWords.size() != 0){
+                for (int j = 0; j < availableWords.size(); j++){
+                    Matcher m = textChecker.matcher(availableWords.get(j)); 
+                    if(m.find()){
+                        correctCharacters = i;
+                    }
+                }
+            }
+        }
+        return correctCharacters;
     }
 }
