@@ -1,0 +1,9 @@
+public
+static
+void
+main
+class 
+public void myMethodName()
+System.out.println("Hello World");
+public static void main(String args[])
+public class MyFirstJavaProgram
