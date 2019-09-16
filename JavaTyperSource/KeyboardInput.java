@@ -30,7 +30,7 @@ public class KeyboardInput extends Actor
         background = world.getBackground();
         world.addObject(TypedTextActor, 0, 700);
         
-        /*
+        //*
         availableWords.add("help");
         availableWords.add("hello");
         availableWords.add("how");
@@ -89,6 +89,8 @@ public class KeyboardInput extends Actor
     
     private int checktext(String text){
         int correctCharacters = 0;
+        text = text.replace('(', '~');
+        text = text.replace(')', '`');
         for(int i = 1; i < text.length() + 1; i++){
             textChecker = Pattern.compile("^"+text.substring(0,i)+"");
             if(availableWords.size() != 0){
