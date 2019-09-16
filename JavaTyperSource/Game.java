@@ -26,14 +26,17 @@ public class Game extends Actor
         Asteroid ast = new Asteroid();
         world.addObject(ast, randStartCoor, 0);
         Greenfoot.delay(20);
+        
+        world.addObject(new KeyboardInput(this), 0, 0);
     }
     
     public void textCorrect(String s) {
-        
+        System.out.println("Correct");
     }
     
     public void textIncorrect() {
+        System.out.println("InCorrect");
     
-        }
+    }
     
 }

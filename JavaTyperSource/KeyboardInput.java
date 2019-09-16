@@ -18,6 +18,7 @@ public class KeyboardInput extends Actor
     private TypedText TypedTextActor = new TypedText();
     private Pattern textChecker = Pattern.compile("^$");
     private ArrayList<String> availableWords = new ArrayList<String>();
+    private Game gameController;
     
     /**
      * Constructor for objects of class KeyboardInput
@@ -25,12 +26,16 @@ public class KeyboardInput extends Actor
     public KeyboardInput()
     {
     }
+    public KeyboardInput(Game gController)
+    {
+        gameController = gController;
+    }
     
     public void addedToWorld(World world){
         background = world.getBackground();
         world.addObject(TypedTextActor, 0, 700);
         
-        //*
+        /*
         availableWords.add("help");
         availableWords.add("hello");
         availableWords.add("how");
@@ -65,7 +70,11 @@ public class KeyboardInput extends Actor
     }
     
     public void entered(String input){
-    
+        if(textFinalCorrect(text)){
+            gameController.textCorrect(text);
+        } else {
+            gameController.textIncorrect();
+        }
     }
     
     public void addWord(String input){
@@ -103,5 +112,22 @@ public class KeyboardInput extends Actor
             }
         }
         return correctCharacters;
+    }
+    private boolean textFinalCorrect(String text){
+        boolean textCorrect = false; 
+        text = text.replace('(', '~');
+        text = text.replace(')', '`');
+        for(int i = 1; i < text.length() + 1; i++){
+            textChecker = Pattern.compile("^"+text.substring(0,i)+"$");
+            if(availableWords.size() != 0){
+                for (int j = 0; j < availableWords.size(); j++){
+                    Matcher m = textChecker.matcher(availableWords.get(j)); 
+                    if(m.matches()){
+                        textCorrect = true;
+                    }
+                }
+            }
+        }
+        return textCorrect;
     }
 }
