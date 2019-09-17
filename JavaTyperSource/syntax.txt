@@ -1,9 +1,74 @@
+'a'
+if
+i++
+else
+do
+x + y
+try
+x % y
+catch
+while
 public
 static
 void
+x - y
 main
-class 
-public void myMethodName()
-System.out.println("Hello World");
-public static void main(String args[])
+true
+false
+x / y
+++x
+x--
+--x
+private
+recursion
+x**2
+2-D array
+class
+String
+int
+float
+char
+boolean
+return
+@author
+@version
+public String
+public class
+String[] args
+Math.random
+/* this is a multi line comment */
+//this is a comment
+String name = "John";
+System.out.println~name`;
+import greenfoot.*
+"Hello, World"
+public int x;
+if ~x != 2` {}
+int x = 100 + 50;
+byte myNum = 100;
+int myNum = 15;
+float myFloat = 1.99f;
+char myLetter = 'A';
+String txt = "It\'s alright.";
+boolean myBool = true;
+String myText = "hello";
+System.out.println~myNum`;
+int myInt = ~int` myDouble;
+protected static int y = 0;
+System.out.println~txt.indexOf~"locate"``;
+System.out.println~"Hello my name is " + name`;
+import java.util.Arraylist
+System.out.println~x + y`;
+System.out.println~txt.toUpperCase~``;
+public void myMethodName~`
+System.out.println~"Hello World"`;
+System.out.println~txt.toUpperCase~``;
+public static void main~String[] args`
 public class MyFirstJavaProgram
+double[] Array = new double[10];
+Scanner scanner = new Scanner~System.in`;
+String txt = "The character \\ is called backslash.";
+for ~int i = 0; i < 10; i++` {}
+int [][] doubleArray = new int [4][5];
+String txt = "We are the so-called \"Vikings\" from the north.";
+System.out.println~"The length of the txt string is: " + txt.length~``;
