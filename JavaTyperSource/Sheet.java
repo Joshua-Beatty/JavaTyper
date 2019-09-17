@@ -64,7 +64,7 @@ public class Sheet {
         //returnsWords.add("esks");
         try
         {
-            URL path = Sheet.class.getClassLoader().getResource("filename.txt");
+            URL path = Sheet.class.getClassLoader().getResource(fileName);
             InputStream input = path.openStream();
             br = new BufferedReader(new InputStreamReader(input));
         }

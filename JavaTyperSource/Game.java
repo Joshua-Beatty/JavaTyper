@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-//World w;
 
 /**
  * Write a description of class Game here.
@@ -15,23 +14,25 @@ public class Game extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    boolean one = false;
     private ArrayList<Asteroid> astArray = new ArrayList<Asteroid>();
-    
+    private KeyboardInput ki = new KeyboardInput(this);
+    private ArrayList<String> possibleWords = Sheet.main("syntax.txt");
+    private int possibleWordIndex = 0;
     public int randomNumbers(int min, int max) {
         return (int)((Math.random() * ((max - min) + 1)) + min);
     }
     
     public void act() {
+        
         if(randomNumbers(1, 100) % 100 == 0) {       
-            int randStartCoor = randomNumbers(0, 1200);
-            Asteroid aster = new Asteroid(this, "word");
-            astArray.add(aster);
-            getWorld().addObject(aster, randStartCoor, 0);
+            addAst(possibleWords.get(possibleWordIndex));
+            ki.addWord(possibleWords.get(possibleWordIndex));
         }
         if(randomNumbers(1, 200) % 200 == 0) {
             displayAstArray();
         }
+        if(possibleWordIndex < 8)
+            possibleWordIndex++;
     }
     
     public Asteroid getAstByWord(String s) {
@@ -44,12 +45,15 @@ public class Game extends Actor
     }
     
     public void addAst(String s) {
-        
+        int randStartCoor = randomNumbers(0, 1200);
+        Asteroid aster = new Asteroid(this, s);
+        astArray.add(aster);
+        getWorld().addObject(aster, randStartCoor, 0);
     }
     
     
     public void addedToWorld(World world) {        
-        world.addObject(new KeyboardInput(this), 0, 0);
+        world.addObject(ki, 0, 0);
     }
     
     public void textCorrect(String s) {
