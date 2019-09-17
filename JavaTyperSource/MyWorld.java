@@ -19,5 +19,6 @@ public class MyWorld extends World
 
         super(600*2, 400*2, 1); 
         Game game = new Game();
+        addObject(game, 0, 0);
     }
 }
