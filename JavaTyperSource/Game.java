@@ -17,6 +17,7 @@ public class Game extends Actor
     
     boolean one = false;
     private ArrayList<Asteroid> astArray = new ArrayList<Asteroid>();
+    private GunGun mainGun;
     
     public int randomNumbers(int min, int max) {
         return (int)((Math.random() * ((max - min) + 1)) + min);
@@ -45,13 +46,18 @@ public class Game extends Actor
     
     public void addedToWorld(World world) {
         world.addObject(new KeyboardInput(this), 0, 0);
+        mainGun = new GunGun();
+        world.addObject(mainGun, 0, 0);
     }
     
     public void textCorrect(String s) {
+        System.out.println(s);
         Asteroid deleteAst = getAstByWord(s);
-        System.out.println(deleteAst.word);
-
+        //System.out.println(deleteAst.word);
+        
+        
         if(deleteAst != null) {
+            mainGun.destroyAsteroid(deleteAst);
             getWorld().removeObject(deleteAst);
         }
         astArray.remove(deleteAst);

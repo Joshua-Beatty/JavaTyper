@@ -12,8 +12,12 @@ public class GunLaser extends Actor
      * Act - do whatever the GunLaser wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int speed = 30;
+    public GunLaser(int rotation){
+        setRotation(rotation);
+    }
     public void act() 
     {
-        // Add your action code here.
+        move(speed);
     }    
 }
