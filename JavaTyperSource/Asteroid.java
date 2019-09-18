@@ -18,36 +18,44 @@ public class Asteroid extends Actor
     public boolean alive = true;
     private int bottomThreshold = 500;
     private Game gameController;
+    private AsteroidText displayText;
     
     public Asteroid(Game controller, String s) {
         setImage("asteroid.png");
         word = s;
         gameController = controller;
-        GreenfootImage textDisplay = new GreenfootImage(word, 50, Color.WHITE, Color.BLACK, Color.BLACK);
-        GreenfootImage asteroidImage = new GreenfootImage("asteroid.png");
-        asteroidImage.drawImage(textDisplay, 90, 90);
-        setImage(asteroidImage);
+        displayText = new AsteroidText(word);
+        
     }
     public Asteroid(String s) {
         setImage("asteroid.png");
         word = s;
     }
     
+    public void addedToWorld(World world) {
+        world.addObject(displayText, this.getX(), this.getY());
+    }
     
     public void act() 
     {
         drop(1);
         if(reachedBottom()) {
             gameController.astReachedBottom(this);
+            getWorld().removeObject(displayText);
             getWorld().removeObject(this);
         }
-        else if(hitByLaser() && laserTarget) {
+        else if(hitByLaser() != null && laserTarget) {
+            getWorld().removeObject(hitByLaser());
+            getWorld().removeObject(displayText);
             getWorld().removeObject(this);
         }
     }    
     
     public void drop(int speed) {
         setLocation(this.getX(),this.getY() + 1);
+        if(displayText.getWorld() != null ){
+            displayText.setLocation(displayText.getX(), displayText.getY() + 1);
+        }
     }
     
     public boolean reachedBottom() {
@@ -56,12 +64,10 @@ public class Asteroid extends Actor
         return false;
     }
     
-    public boolean hitByLaser() {
+    public Actor hitByLaser() {
         Actor lazer = getOneIntersectingObject(GunLaser.class);
-        if(lazer != null) {
-            return true;
-        }
-        return false;
+        return lazer;
+        
     }
     
 }
