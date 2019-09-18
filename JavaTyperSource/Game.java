@@ -66,9 +66,9 @@ public class Game extends Actor
         Asteroid deleteAst = getAstByWord(s);        
         if(deleteAst != null) {
             ki.removeWord(deleteAst.word);
-
             mainGun.destroyAsteroid(deleteAst);
-            getWorld().removeObject(deleteAst);
+            deleteAst.laserTarget = true;
+            //getWorld().removeObject(deleteAst);
         }
         astArray.remove(deleteAst);
         

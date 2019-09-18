@@ -14,16 +14,18 @@ public class Asteroid extends Actor
      */
     
     public String word;
+    public boolean laserTarget = false;
+    public boolean alive = true;
     private int bottomThreshold = 500;
     private Game gameController;
     
     public Asteroid(Game controller, String s) {
-        setImage("asteroid.jpg");
+        setImage("asteroid.png");
         word = s;
         gameController = controller;
     }
     public Asteroid(String s) {
-        setImage("asteroid.jpg");
+        setImage("asteroid.png");
         word = s;
     }
     
@@ -35,6 +37,9 @@ public class Asteroid extends Actor
             gameController.astReachedBottom(this);
             getWorld().removeObject(this);
         }
+        else if(hitByLaser() && laserTarget) {
+            getWorld().removeObject(this);
+        }
     }    
     
     public void drop(int speed) {
@@ -44,6 +49,14 @@ public class Asteroid extends Actor
     public boolean reachedBottom() {
         if(this.getY() > bottomThreshold)
             return true;   
+        return false;
+    }
+    
+    public boolean hitByLaser() {
+        Actor lazer = getOneIntersectingObject(GunLaser.class);
+        if(lazer != null) {
+            return true;
+        }
         return false;
     }
     
