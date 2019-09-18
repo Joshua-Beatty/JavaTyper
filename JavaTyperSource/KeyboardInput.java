@@ -13,7 +13,7 @@ public class KeyboardInput extends Actor
     public String text = "";
     private String rawInput = "";
     private String keyPressed = "";
-    private Pattern possibleKeys = Pattern.compile("^[a-zA-Z.,;()\"1-90!@#$%^&*']$");
+    private Pattern possibleKeys = Pattern.compile("^[a-zA-Z-+_=/?.,;()\"1-90!@#$%^&*']$");
     private GreenfootImage background;
     private TypedText TypedTextActor = new TypedText();
     private Pattern textChecker = Pattern.compile("^$");
