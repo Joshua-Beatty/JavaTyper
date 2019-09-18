@@ -27,20 +27,23 @@ public class Game extends Actor
         if(randomNumbers(1, 100) % 100 == 0) {       
             addAst(possibleWords.get(possibleWordIndex));
             ki.addWord(possibleWords.get(possibleWordIndex));
+            if(possibleWordIndex < (possibleWords.size() - 1))
+                possibleWordIndex++;
         }
         if(randomNumbers(1, 200) % 200 == 0) {
             displayAstArray();
         }
-        if(possibleWordIndex < 8)
-            possibleWordIndex++;
+            
     }
     
     public Asteroid getAstByWord(String s) {
-        for(Asteroid astItem: astArray) {
-            if(astItem.word == s) {
+        for(Asteroid astItem : astArray) {
+            System.out.println(astItem.word);
+            if(astItem.word.equals(s)) {
                 return astItem;
             }
         }
+        System.out.println("returned null ast");
         return null;
     }
     
@@ -59,9 +62,8 @@ public class Game extends Actor
     public void textCorrect(String s) {
         System.out.println("Correct");
         Asteroid deleteAst = getAstByWord(s);
-        System.out.println(deleteAst.word);
-
         if(deleteAst != null) {
+            ki.removeWord(deleteAst.word);
             getWorld().removeObject(deleteAst);
         }
         astArray.remove(deleteAst);
