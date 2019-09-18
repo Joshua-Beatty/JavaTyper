@@ -23,6 +23,10 @@ public class Asteroid extends Actor
         setImage("asteroid.png");
         word = s;
         gameController = controller;
+        GreenfootImage textDisplay = new GreenfootImage(word, 50, Color.WHITE, Color.BLACK, Color.BLACK);
+        GreenfootImage asteroidImage = new GreenfootImage("asteroid.png");
+        asteroidImage.drawImage(textDisplay, 90, 90);
+        setImage(asteroidImage);
     }
     public Asteroid(String s) {
         setImage("asteroid.png");
