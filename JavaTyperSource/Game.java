@@ -18,6 +18,8 @@ public class Game extends Actor
     private KeyboardInput ki = new KeyboardInput(this);
     private ArrayList<String> possibleWords = Sheet.main("syntax.txt");
     private int possibleWordIndex = 0;
+    private GunGun mainGun = new GunGun();
+    
     public int randomNumbers(int min, int max) {
         return (int)((Math.random() * ((max - min) + 1)) + min);
     }
@@ -57,13 +59,15 @@ public class Game extends Actor
     
     public void addedToWorld(World world) {        
         world.addObject(ki, 0, 0);
+        world.addObject(mainGun, 0, 0);
     }
     
     public void textCorrect(String s) {
-        System.out.println("Correct");
-        Asteroid deleteAst = getAstByWord(s);
+        Asteroid deleteAst = getAstByWord(s);        
         if(deleteAst != null) {
             ki.removeWord(deleteAst.word);
+
+            mainGun.destroyAsteroid(deleteAst);
             getWorld().removeObject(deleteAst);
         }
         astArray.remove(deleteAst);
@@ -84,6 +88,7 @@ public class Game extends Actor
     }
     
     public void astReachedBottom(Asteroid bottomAst) {
+        ki.removeWord(bottomAst.word);
         astArray.remove(bottomAst);
         
     }
