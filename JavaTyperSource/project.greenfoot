@@ -1,8 +1,15 @@
 #Greenfoot properties
-#Wed Sep 11 10:17:16 PDT 2019
-project.charset=UTF-8
+#Wed Sep 18 10:29:33 PDT 2019
+mainWindow.width=850
+class.Start.image=javatyper.png
+class.Sheet.superclass=
+class.MyWorld.superclass=greenfoot.World
 version=3.0.0
+project.charset=UTF-8
+class.Start.superclass=greenfoot.Actor
+class.Title.image=giphy.gif
+class.Title.superclass=greenfoot.World
+world.lastInstantiated=Title
 mainWindow.y=40
 mainWindow.x=40
 mainWindow.height=600
-mainWindow.width=850
