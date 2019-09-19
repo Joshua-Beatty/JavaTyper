@@ -20,13 +20,15 @@ public class Game extends Actor
     private int possibleWordIndex = 0;
     private GunGun mainGun = new GunGun();
     
+    private int astSpawnCounter = 0;
+    
     public int randomNumbers(int min, int max) {
         return (int)((Math.random() * ((max - min) + 1)) + min);
     }
     
     public void act() {
         
-        if(randomNumbers(1, 100) % 100 == 0) {       
+        if(astSpawnCounter % 100 == 0) {       
             addAst(possibleWords.get(possibleWordIndex));
             ki.addWord(possibleWords.get(possibleWordIndex));
             if(possibleWordIndex < (possibleWords.size() - 1))
@@ -35,6 +37,7 @@ public class Game extends Actor
         if(randomNumbers(1, 200) % 200 == 0) {
             displayAstArray();
         }
+        astSpawnCounter++;     
             
     }
     
