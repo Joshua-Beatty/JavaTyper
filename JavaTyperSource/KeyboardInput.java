@@ -93,8 +93,8 @@ public class KeyboardInput extends Actor
     
     private void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
         int fontSize = 50;
-        GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), fontSize, Color.WHITE, Color.WHITE, Color.BLACK);
-        GreenfootImage redText = new GreenfootImage(textToDisplay.substring(WhiteCharacters, textToDisplay.length()), fontSize, Color.RED, Color.WHITE, Color.BLACK);
+        GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), fontSize, Color.WHITE, Color.BLACK, Color.WHITE);
+        GreenfootImage redText = new GreenfootImage(textToDisplay.substring(WhiteCharacters, textToDisplay.length()), fontSize, Color.RED, Color.BLACK, Color.WHITE);
         GreenfootImage finalImage = new GreenfootImage(redText.getWidth()+whiteText.getWidth(),whiteText.getHeight());
         finalImage.drawImage(whiteText, 0, 0);
         finalImage.drawImage(redText, whiteText.getWidth(), 0);
@@ -103,7 +103,7 @@ public class KeyboardInput extends Actor
     }
     private void displayCorrectText(String textToDisplay){
         int fontSize = 50;
-        GreenfootImage finalImage = new GreenfootImage(textToDisplay, fontSize, Color.GREEN, Color.WHITE, Color.BLACK);
+        GreenfootImage finalImage = new GreenfootImage(textToDisplay, fontSize, Color.GREEN, Color.BLACK, Color.WHITE);
               
         TypedTextActor.setImage(finalImage);
     }
