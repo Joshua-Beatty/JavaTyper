@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 /**
  * Write a description of class Game here.
@@ -17,10 +19,15 @@ public class Game extends Actor
     private ArrayList<Asteroid> astArray = new ArrayList<Asteroid>();
     private KeyboardInput ki = new KeyboardInput(this);
     private ArrayList<String> possibleWords = Sheet.main("syntax.txt");
+
     private int possibleWordIndex = 0;
     private GunGun mainGun = new GunGun();
-    
     private int astSpawnCounter = 0;
+    
+    public Game() {
+        Collections.shuffle(possibleWords);
+    }
+    
     
     public int randomNumbers(int min, int max) {
         return (int)((Math.random() * ((max - min) + 1)) + min);
@@ -28,16 +35,19 @@ public class Game extends Actor
     
     public void act() {
         
-        if(astSpawnCounter % 100 == 0) {       
+        if(astSpawnCounter > 400) {       
             addAst(possibleWords.get(possibleWordIndex));
             ki.addWord(possibleWords.get(possibleWordIndex));
-            if(possibleWordIndex < (possibleWords.size() - 1))
+            astSpawnCounter = 1;
+            if(possibleWordIndex < (possibleWords.size() - 1)) {
                 possibleWordIndex++;
+            }
+            else {
+                Collections.shuffle(possibleWords);
+                possibleWordIndex = 0;
+            }
         }
-        if(randomNumbers(1, 200) % 200 == 0) {
-            displayAstArray();
-        }
-        astSpawnCounter++;     
+        astSpawnCounter = astSpawnCounter + randomNumbers(1, 5);     
             
     }
     
@@ -53,7 +63,7 @@ public class Game extends Actor
     }
     
     public void addAst(String s) {
-        int randStartCoor = randomNumbers(0, 1200);
+        int randStartCoor = randomNumbers(200, 1000);
         Asteroid aster = new Asteroid(this, s);
         astArray.add(aster);
         getWorld().addObject(aster, randStartCoor, 0);
