@@ -16,19 +16,28 @@ public class Asteroid extends Actor
     public String word;
     public boolean laserTarget = false;
     public boolean alive = true;
-    private int bottomThreshold = 500;
+    private int bottomThreshold = 700;
     private Game gameController;
     private AsteroidText displayText;
+    private int rspeed = 10;
     
     public Asteroid(Game controller, String s) {
-        setImage("asteroid.png");
+        int size = (int)( Math.random() * 125 + 100);
+        GreenfootImage sprite = new GreenfootImage("asteroid.png");
+        sprite.scale(size, size);
+        setImage(sprite);
+        rspeed = (int)( Math.random() * 12 + 1);
         word = s;
         gameController = controller;
         displayText = new AsteroidText(word);
         
     }
     public Asteroid(String s) {
-        setImage("asteroid.png");
+        int size = (int) (Math.random() * 125 + 100);
+        GreenfootImage sprite = new GreenfootImage("asteroid.png");
+        rspeed = (int)( Math.random() * 12 + 1);
+        sprite.scale(size, size);
+        setImage(sprite);
         word = s;
     }
     
@@ -52,6 +61,7 @@ public class Asteroid extends Actor
     }    
     
     public void drop(int speed) {
+        setRotation(getRotation() + rspeed);
         setLocation(this.getX(),this.getY() + 1);
         if(displayText.getWorld() != null ){
             displayText.setLocation(displayText.getX(), displayText.getY() + 1);
