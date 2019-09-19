@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Greenfoot project file
 editor.fx.0.height=1056
 editor.fx.0.width=1936
@@ -39,3 +40,20 @@ width=1936
 world.lastInstantiated=MyWorld
 xPosition=0
 yPosition=0
+=======
+#Greenfoot properties
+#Wed Sep 18 10:29:33 PDT 2019
+mainWindow.width=850
+class.Start.image=javatyper.png
+class.Sheet.superclass=
+class.MyWorld.superclass=greenfoot.World
+version=3.0.0
+project.charset=UTF-8
+class.Start.superclass=greenfoot.Actor
+class.Title.image=giphy.gif
+class.Title.superclass=greenfoot.World
+world.lastInstantiated=Title
+mainWindow.y=40
+mainWindow.x=40
+mainWindow.height=600
+>>>>>>> f6a744c7898793ab0ce801df8d2ccdf7f2221189
