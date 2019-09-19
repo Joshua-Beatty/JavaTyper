@@ -1,4 +1,5 @@
 #Greenfoot project file
+<<<<<<< HEAD
 class.MyWorld.superclass=greenfoot.World
 class.Sheet.superclass=
 class.Start.image=javatyper.png
@@ -16,32 +17,81 @@ mainWindow.y=-9
 package.numDependencies=0
 package.numTargets=4
 project.charset=UTF-8
+=======
+class.Button.image=start.png
+class.Start.image=javatyper.png
+class.Title.image=giphy.gif
+dependency1.from=Title
+dependency1.to=Start
+dependency1.type=UsesDependency
+dependency2.from=Title
+dependency2.to=Button
+dependency2.type=UsesDependency
+dependency3.from=Button
+dependency3.to=MyWorld
+dependency3.type=UsesDependency
+editor.fx.0.height=1167
+editor.fx.0.width=974
+editor.fx.0.x=-967
+editor.fx.0.y=-115
+height=1056
+package.numDependencies=3
+package.numTargets=4
+project.charset=UTF-8
+publish.hasSource=false
+publish.locked=true
+publish.longDesc=
+publish.shortDesc=
+publish.tags=
+publish.title=
+publish.url=
+>>>>>>> facf57400699724cf0009835b8b62c13c23dcd10
 readme.height=58
 readme.name=@README
 readme.width=47
 readme.x=10
 readme.y=10
+<<<<<<< HEAD
 target1.height=50
 target1.name=Start
 target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
+=======
+simulation.speed=50
+target1.height=50
+target1.name=Button
+target1.showInterface=false
+target1.type=ClassTarget
+>>>>>>> facf57400699724cf0009835b8b62c13c23dcd10
 target1.width=80
 target1.x=0
 target1.y=0
 target2.height=50
+<<<<<<< HEAD
 target2.name=Title
 target2.showInterface=false
 target2.type=ClassTarget
 target2.typeParameters=
+=======
+target2.name=Start
+target2.showInterface=false
+target2.type=ClassTarget
+>>>>>>> facf57400699724cf0009835b8b62c13c23dcd10
 target2.width=80
 target2.x=0
 target2.y=0
 target3.height=50
+<<<<<<< HEAD
 target3.name=Sheet
 target3.showInterface=false
 target3.type=ClassTarget
 target3.typeParameters=
+=======
+target3.name=Title
+target3.showInterface=false
+target3.type=ClassTarget
+>>>>>>> facf57400699724cf0009835b8b62c13c23dcd10
 target3.width=80
 target3.x=0
 target3.y=0
@@ -49,9 +99,20 @@ target4.height=50
 target4.name=MyWorld
 target4.showInterface=false
 target4.type=ClassTarget
+<<<<<<< HEAD
 target4.typeParameters=
 target4.width=90
 target4.x=0
 target4.y=0
 version=3.0.0
 world.lastInstantiated=Title
+=======
+target4.width=80
+target4.x=0
+target4.y=0
+version=3.0.0
+width=1936
+world.lastInstantiated=Title
+xPosition=0
+yPosition=0
+>>>>>>> facf57400699724cf0009835b8b62c13c23dcd10
