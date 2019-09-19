@@ -19,6 +19,14 @@ public class Title extends World
         super(1200, 800, 1); 
         prepare();
     }
+    public Title(int score)
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(1200, 800, 1); 
+        prepare();
+        
+        addObject(new text("Score: " + score), 600, 750);
+    }
     
     private void prepare() {
         Start start = new Start();

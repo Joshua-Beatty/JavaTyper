@@ -23,9 +23,14 @@ public class Game extends Actor
     private int possibleWordIndex = 0;
     private GunGun mainGun = new GunGun();
     private int astSpawnCounter = 0;
-    
+    private int score = 0;
+    private int life = 3;
+    private text scoreText;
+    private text lifeText;
     public Game() {
         Collections.shuffle(possibleWords);
+        scoreText = new text("Score: " + score);
+        lifeText = new text("Life: " + life);
     }
     
     
@@ -34,7 +39,8 @@ public class Game extends Actor
     }
     
     public void act() {
-        
+        scoreText.setText("Score: " + score);
+        lifeText.setText("Life: " + life);
         if(astSpawnCounter > 400) {       
             addAst(possibleWords.get(possibleWordIndex));
             ki.addWord(possibleWords.get(possibleWordIndex));
@@ -48,7 +54,9 @@ public class Game extends Actor
             }
         }
         astSpawnCounter = astSpawnCounter + randomNumbers(1, 5);     
-            
+        if(life == 0){
+            Greenfoot.setWorld(new Title(score));
+        }
     }
     
     public Asteroid getAstByWord(String s) {
@@ -73,11 +81,15 @@ public class Game extends Actor
     public void addedToWorld(World world) {        
         world.addObject(ki, 0, 0);
         world.addObject(mainGun, 0, 0);
+        world.addObject(scoreText, 90, 20);
+        world.addObject(lifeText, 70, 70);
+        
     }
     
     public void textCorrect(String s) {
         Asteroid deleteAst = getAstByWord(s);        
         if(deleteAst != null) {
+            score++;
             ki.removeWord(deleteAst.word);
             mainGun.destroyAsteroid(deleteAst);
             deleteAst.laserTarget = true;
@@ -103,7 +115,7 @@ public class Game extends Actor
     public void astReachedBottom(Asteroid bottomAst) {
         ki.removeWord(bottomAst.word);
         astArray.remove(bottomAst);
-        
+        life--;
     }
     
 }

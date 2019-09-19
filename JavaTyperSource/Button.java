@@ -40,13 +40,14 @@ public class Button extends Actor
         }*/
 
         if (Greenfoot.mouseClicked(this)) {
-            Greenfoot.delay(3);
             Greenfoot.setWorld(new MyWorld());
         }
         if (Greenfoot.mouseMoved(this))
-            setImage("start1.png");
+            setImage("start2.png");
             //image.scale(image.getWidth() - 200, image.getHeight() - 200);
         if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
             setImage("start.png");
+        if (Greenfoot.mousePressed(this))
+            setImage("start1.png");
     }    
 }
