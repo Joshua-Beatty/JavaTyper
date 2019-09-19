@@ -1,6 +1,4 @@
 import greenfoot.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.ArrayList;
 /**
  * Write a description of class KeyboardInput here.
@@ -13,10 +11,8 @@ public class KeyboardInput extends Actor
     public String text = "";
     private String rawInput = "";
     private String keyPressed = "";
-    private Pattern possibleKeys = Pattern.compile("^[a-zA-Z-+_=/?.,;()\"1-90!@#$%^&*']$");
     private GreenfootImage background;
     private TypedText TypedTextActor = new TypedText();
-    private Pattern textChecker = Pattern.compile("^$");
     private ArrayList<String> availableWords = new ArrayList<String>();
     private Game gameController;
     
@@ -46,9 +42,13 @@ public class KeyboardInput extends Actor
     public void act(){
         rawInput = Greenfoot.getKey();
         if(rawInput != null){
-            Matcher m = possibleKeys.matcher(rawInput);  
-            if(m.matches()){
+            if(rawInput.length() == 1){
+                if(Character.isLetter(rawInput.charAt(0)) || Character.isDigit(rawInput.charAt(0))){
                     text = text + rawInput;
+                } else if ( "[]-+_=/?.,;()\"!@#$%^&*'".contains(rawInput)){
+                    text = text + rawInput;
+                }
+                
             }
             if(rawInput == "space"){
                 text = text + " ";
@@ -85,7 +85,10 @@ public class KeyboardInput extends Actor
     }
     
     public void removeWord(String input){
-        availableWords.remove(availableWords.indexOf(input));
+        int indexOfWord = availableWords.indexOf(input);
+        if(indexOfWord != -1){
+            availableWords.remove(indexOfWord);
+        }
     }
     
     private void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
@@ -110,11 +113,9 @@ public class KeyboardInput extends Actor
         text = text.replace('(', '~');
         text = text.replace(')', '`');
         for(int i = 1; i < text.length() + 1; i++){
-            textChecker = Pattern.compile("^"+text.substring(0,i)+"");
             if(availableWords.size() != 0){
                 for (int j = 0; j < availableWords.size(); j++){
-                    Matcher m = textChecker.matcher(availableWords.get(j)); 
-                    if(m.find()){
+                    if(availableWords.get(j).contains(text.substring(0,i))){
                         correctCharacters = i;
                     }
                 }
@@ -124,14 +125,10 @@ public class KeyboardInput extends Actor
     }
     private boolean textFinalCorrect(String text){
         boolean textCorrect = false; 
-        text = text.replace('(', '~');
-        text = text.replace(')', '`');
         for(int i = 1; i < text.length() + 1; i++){
-            textChecker = Pattern.compile("^"+text+"$");
             if(availableWords.size() != 0){
                 for (int j = 0; j < availableWords.size(); j++){
-                    Matcher m = textChecker.matcher(availableWords.get(j)); 
-                    if(m.matches()){
+                    if(availableWords.get(j).equals(text)){
                         textCorrect = true;
                     }
                 }
