@@ -1,5 +1,9 @@
 #Greenfoot properties
+<<<<<<< HEAD
 #Thu Sep 19 09:37:00 PDT 2019
+=======
+#Thu Sep 19 09:32:09 PDT 2019
+>>>>>>> 25fd30217e9713ff0f283ccd58141f12bd4037a1
 target2.width=80
 editor.fx.0.height=747
 target8.name=KeyboardInput
@@ -87,9 +91,15 @@ target2.showInterface=false
 dependency1.from=Title
 yPosition=0
 class.GunBase.superclass=greenfoot.Actor
+<<<<<<< HEAD
 mainWindow.y=0
 target5.showInterface=false
 mainWindow.x=345
+=======
+mainWindow.y=26
+target5.showInterface=false
+mainWindow.x=192
+>>>>>>> 25fd30217e9713ff0f283ccd58141f12bd4037a1
 dependency16.to=Game
 target8.showInterface=false
 dependency5.from=GunGun

@@ -110,8 +110,6 @@ public class KeyboardInput extends Actor
     
     private int checktext(String text){
         int correctCharacters = 0;
-        text = text.replace('(', '~');
-        text = text.replace(')', '`');
         for(int i = 1; i < text.length() + 1; i++){
             if(availableWords.size() != 0){
                 for (int j = 0; j < availableWords.size(); j++){
