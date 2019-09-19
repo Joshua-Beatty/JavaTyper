@@ -9,10 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Button extends Actor
 {
     GreenfootImage image = getImage();
+    
     int w, h;
     
     public Button() {
-        image.scale(image.getWidth() - 700, image.getHeight() - 700);
+        //image.scale(image.getWidth() - 700, image.getHeight() - 700);
         //setImage(image);
     }
     
@@ -42,5 +43,10 @@ public class Button extends Actor
             Greenfoot.delay(3);
             Greenfoot.setWorld(new MyWorld());
         }
+        if (Greenfoot.mouseMoved(this))
+            setImage("start1.png");
+            //image.scale(image.getWidth() - 200, image.getHeight() - 200);
+        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
+            setImage("start.png");
     }    
 }
