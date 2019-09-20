@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class GunGun here.
+ * This class controls the shooting of laser at specified objects
  * 
  * @author Josh Beatty
  * @version 2019-09-18
