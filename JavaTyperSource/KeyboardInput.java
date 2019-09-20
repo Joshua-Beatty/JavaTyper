@@ -1,10 +1,12 @@
 import greenfoot.*;
 import java.util.ArrayList;
 /**
- * Write a description of class KeyboardInput here.
+ * The KeyboardInput Class takes into user input and displays it
+ * It then checks it against a list of words displaying it in different colors
+ * It also calls a specific fuction in a nother calss passing along the word that was entered
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Josh Beatty 
+ * @version 2019-09-18
  */
 public class KeyboardInput extends Actor
 {
@@ -17,21 +19,27 @@ public class KeyboardInput extends Actor
     private Game gameController;
     
     /**
-     * Constructor for objects of class KeyboardInput
+     * Base constructor used for testing 
      */
     public KeyboardInput()
     {
     }
+    /**
+     * Constructor for live game, allows the calling of functions in the gameController class
+     */
     public KeyboardInput(Game gController)
     {
         gameController = gController;
     }
     
+    /**
+     * When added to the world save the background world and add a text object to the world.
+     */
     public void addedToWorld(World world){
         background = world.getBackground();
         world.addObject(TypedTextActor, 0, 700);
         
-        //*
+        /*
         availableWords.add("help");
         availableWords.add("hello");
         availableWords.add("how");
@@ -39,6 +47,10 @@ public class KeyboardInput extends Actor
         //*/
     }
     
+    /**
+     * Every frame save the input and add it to the text variable if it is a valid character
+     * it also displays text based on how much of it is correct
+     */
     public void act(){
         rawInput = Greenfoot.getKey();
         if(rawInput != null){
@@ -72,6 +84,10 @@ public class KeyboardInput extends Actor
         }
     }
     
+    /**
+     * This function calls the game controller class based on if the input matches the list
+     *  @param input the text to be checked against the list and passed to the game controller class
+     */
     public void entered(String input){
         if(textFinalCorrect(text)){
             gameController.textCorrect(text);
@@ -80,10 +96,18 @@ public class KeyboardInput extends Actor
         }
     }
     
+    /**
+     * Called to add a word to the arraylist
+     * @param input the string to be added to the arraylist
+     */
     public void addWord(String input){
         availableWords.add(input);
     }
     
+    /**
+     * Called to remove a word from the arraylist
+     * @param input the word to be removed
+     */
     public void removeWord(String input){
         int indexOfWord = availableWords.indexOf(input);
         if(indexOfWord != -1){
@@ -91,6 +115,11 @@ public class KeyboardInput extends Actor
         }
     }
     
+    /**
+     * displays text based on how much of the text is correct
+     * @param textToDisplay the text to display
+     * @param WhiteCharacters an int number for the number of white characters to display as opposed to red
+     */
     private void displayWhiteRed(String textToDisplay, int  WhiteCharacters){
         int fontSize = 50;
         GreenfootImage whiteText = new GreenfootImage(textToDisplay.substring(0, WhiteCharacters), fontSize, Color.WHITE, Color.BLACK, Color.WHITE);
@@ -101,6 +130,11 @@ public class KeyboardInput extends Actor
         
         TypedTextActor.setImage(finalImage);
     }
+    
+    /**
+     * Called when the text is correct to display green text
+     * @param textToDisplay the text to display in green
+     */
     private void displayCorrectText(String textToDisplay){
         int fontSize = 50;
         GreenfootImage finalImage = new GreenfootImage(textToDisplay, fontSize, Color.GREEN, Color.BLACK, Color.WHITE);
@@ -108,6 +142,11 @@ public class KeyboardInput extends Actor
         TypedTextActor.setImage(finalImage);
     }
     
+    /**
+     * Checks how much of the typed text is correct
+     * @param text the text to be checked against the arrayList
+     * @return the number of correct characters
+     */
     private int checktext(String text){
         int correctCharacters = 0;
         for(int i = 1; i < text.length() + 1; i++){
@@ -121,6 +160,11 @@ public class KeyboardInput extends Actor
         }
         return correctCharacters;
     }
+    /**
+     * Checks if the text exactly matches a string in the arraylist
+     * @param text the text to be checked
+     * @return a boolean if the text is correct
+     */
     private boolean textFinalCorrect(String text){
         boolean textCorrect = false; 
         for(int i = 1; i < text.length() + 1; i++){
