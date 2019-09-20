@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class text here.
+ * The text method is just a class to display text as an actor
  * 
  * @author Josh Beatty
  * @version 2019-09-18
