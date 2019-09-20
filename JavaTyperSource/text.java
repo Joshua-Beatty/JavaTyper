@@ -3,24 +3,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class text here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Josh Beatty
+ * @version 2019-09-18
  */
 public class text extends Actor
 {
     /**
-     * Act - do whatever the text wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * This constructor just creates an image of the text and displays it
      */
     public text(String textToDisplay){
     
         GreenfootImage scoreImage = new GreenfootImage(textToDisplay, 50, Color.WHITE, Color.BLACK, Color.WHITE);
         setImage(scoreImage);
     }
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+    /**
+     * The setText functino generate a new image and displays it of the passes text
+     * @param textToDisplay the text to display
+     */
     public void setText(String textToDisplay){
     
         GreenfootImage scoreImage = new GreenfootImage(textToDisplay, 50, Color.WHITE, Color.BLACK, Color.WHITE);
