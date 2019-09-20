@@ -1,20 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TypedText here.
+ * The Typed text actor is an empyt class used to display text
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Josh Beatty
+ * @version 2019-09-18
  */
 public class TypedText extends Actor
 {
-    /**
-     * Act - do whatever the TypedText wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private int offset = 50;
-    public TypedText(){
-    }
+    
+    /**
+     * Sets its position based of teh screen size
+     */
     public void act() 
     {
         setLocation((int)(getImage().getWidth() * .5) + offset, getY());
