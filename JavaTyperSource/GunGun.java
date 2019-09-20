@@ -3,33 +3,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class GunGun here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Josh Beatty
+ * @version 2019-09-18
  */
 public class GunGun extends Actor
 {
-    /**
-     * Act - do whatever the GunGun wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     World wd;
-    public GunGun(){
-    }
+    /**
+     * WHen added to world set is location and create a gunbase object
+     */
     public void addedToWorld(World world){
         setLocation(world.getBackground().getWidth() / 2, world.getBackground().getHeight()- 100);
         world.addObject(new GunBase(), getX(), getY() + 50);
         wd = world;
         setRotation(-90);
     }
-    public void act() 
-    {
-    }    
+    /**
+     * When called it points at the passed object and shoots a laser at it
+     */
     //Call this method to shoot a laser at a specific asteroid
     public void destroyAsteroid(Asteroid ast){
         pointTo(ast.getX(), ast.getY());
-        createLaseer(getRotation());
+        createLaser(getRotation());
     }
-    
+    /**
+     * When called point towards the specified point
+     */
     public void pointTo(int x, int y) {
         int dx = x - getX(); 
         int dy = y - getY(); 
@@ -37,8 +36,10 @@ public class GunGun extends Actor
         rotation = Math.toDegrees(rotation); 
         setRotation( (int)rotation); 
     } 
-    
-    public void createLaseer(int rotation){
+    /**
+     *  When called shoot a laser at the passed rotaion
+     */
+    public void createLaser(int rotation){
         wd.addObject(new GunLaser(rotation), getX(), getY());
     }
 }
