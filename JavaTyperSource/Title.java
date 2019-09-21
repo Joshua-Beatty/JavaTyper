@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Title here.
+ * Title creates the primary background image for the game.
  * 
  * @author Derek Xu
  * @version 9/20/19
