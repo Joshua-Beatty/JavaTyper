@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Start here.
+ * Start actor acts as an image to be placed for the title screen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Derek Xu
+ * @version 9/20/19
  */
 public class Start extends Actor
 {
