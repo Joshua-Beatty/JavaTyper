@@ -1,4 +1,4 @@
-  import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -8,53 +8,16 @@ import java.io.IOException;
 
 
 /**
- * Write a description of class Sheet here.
+ * Sheet class pulls from a preset text file and seperates each line into an array element
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Derek Xu
+ * @version 9/20/19
  */ 
-/*
-public class Sheet  
-{
 
-    
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Sheet
-     */
-    /*
-    public Sheet()
-    {
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    /*public static ArrayList<String> sampleMethod(String fileName)
-    {
-        try
-        {
-            BufferedReader br = null;
-            URL path = getClass().getClassLoader().getResource("filename.txt");
-            InputStream input = path.openStream();
-            br = new BufferedReader(new InputStreamReader(input));
-        }
-        catch (Exception e) { System.out.println("Scenario file missing"); return; }
-        try
-        {
-            String line = null;
-            while ((line = br.readLine()) != null)  line.add(line);
-            br.close();
-        }
-        catch (Exception e) { try { br.close(); } catch (Exception f) {} }
-
-    }
-}*/
+/**
+ * Sheet class inputs "syntax.txt" and runs the BufferedReader method, 
+ * when finished iterating through text file, returns the array as returnsWords
+**/
 
 public class Sheet { 
     public static ArrayList<String> main(String fileName) { 
