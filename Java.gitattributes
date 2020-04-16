@@ -7,7 +7,7 @@
 *.css           text diff=css
 *.df            text
 *.htm           text diff=html
-*.html          text diff=html
+*.html          text linguist-vendored
 *.js            text
 *.jsp           text
 *.jspf          text
